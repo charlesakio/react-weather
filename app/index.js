@@ -1,10 +1,12 @@
+// @flow
+
 var React = require('react');
 var ReactDOM = require('react-dom');
 
 var Hello = React.createClass({
   render: function () {
     return (
-      <div>Hello ReactJS Program!</div>
+      <div>Test Loader!#</div>
     )
   }
 });

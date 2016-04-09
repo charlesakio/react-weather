@@ -1,5 +1,7 @@
-var HtmlWebpackPlugin = require('html-webpack-plugin');
-var HTMLWebpackPluginConfig = new HtmlWebpackPlugin({
+const webpack = require('webpack');
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const HTMLWebpackPluginConfig = new HtmlWebpackPlugin({
   template: __dirname + '/app/index.html',
   filename: 'index.html',
   inject: 'body'
@@ -7,16 +9,21 @@ var HTMLWebpackPluginConfig = new HtmlWebpackPlugin({
 
 module.exports = {
   entry: [
-    './app/index.js'
+    './app/index.js', // App entry point
   ],
   output: {
     path: __dirname + '/dist',
     filename: 'index_bundle.js'
   },
+  plugins: [
+    HTMLWebpackPluginConfig,
+  ],
   module: {
     loaders: [
-      {test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader'}
-    ]
+      { test: /\.jsx?$/, 
+        exclude: /node_modules/, 
+        loader: 'babel-loader',
+      },
+    ],
   },
-  plugins: [HTMLWebpackPluginConfig]
 }
