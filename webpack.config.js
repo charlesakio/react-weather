@@ -9,7 +9,11 @@ const HTMLWebpackPluginConfig = new HtmlWebpackPlugin({
 
 module.exports = {
   entry: [
-    './app/index.js', // App entry point
+    'webpack-dev-server/client?http://0.0.0.0:3000', // WebpackDevServer host and port
+    'webpack/hot/only-dev-server', // "only" prevents reload on syntax errors
+    './app/index', // Your appʼs entry point
+    
+    //'./app/index.js', // App entry point
   ],
   output: {
     path: __dirname + '/dist',
@@ -17,12 +21,13 @@ module.exports = {
   },
   plugins: [
     HTMLWebpackPluginConfig,
+    new webpack.HotModuleReplacementPlugin()
   ],
   module: {
     loaders: [
       { test: /\.jsx?$/, 
         exclude: /node_modules/, 
-        loader: 'babel-loader',
+        loaders: ['react-hot','babel-loader'],
       },
     ],
   },

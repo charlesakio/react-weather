@@ -4,8 +4,7 @@
   "description": "Learning react by building weather app",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server",
-    "prod": "webpack -p",
+    "start": "node server.js",
     "lint": "eslint app"
   },
   "keywords": [

@@ -5,7 +5,9 @@
 
 
 # TODO:
- - [x] Remove node modules in git repository
- - [x] Add react-hot loading
- - [x] Add eslint from Airbnb
- - [x] Add flow
+ - [x] Move helloworld to Main.js file
+ - [x] Set up route configuration to activate Main.js component
+ - [x] Render Main using route
+
+## EXTRA:
+ - [x] Attempt to set up hot loader
