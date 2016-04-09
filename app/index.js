@@ -1,14 +1,6 @@
 // @flow
+const React = require('react');
+const ReactDOM = require('react-dom');
+const routes = require('./config/routes');
 
-var React = require('react');
-var ReactDOM = require('react-dom');
-
-var Hello = React.createClass({
-  render: function () {
-    return (
-      <div>Test Loader!#</div>
-    )
-  }
-});
-
-ReactDOM.render(<Hello />, document.getElementById('app'));
+ReactDOM.render(routes, document.getElementById('app'));
