@@ -1,4 +1,5 @@
 var React = require('react');
+var NavBar = require('../components/Navbar');
 var CityContainer = require('../containers/CityContainer');
 
 var styles = {

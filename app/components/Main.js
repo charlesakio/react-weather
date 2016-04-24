@@ -1,4 +1,5 @@
 var React = require('react');
+var NavBar = require('../components/Navbar');
 
 var styles = {
   container: {
@@ -11,7 +12,7 @@ var Main = React.createClass({
   render: function() {
       return (
             <div style={styles.container}>
-              <h1>Main.js Header</h1>
+              <NavBar />
                 {this.props.children}
             </div>
         )
