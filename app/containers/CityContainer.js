@@ -2,16 +2,7 @@ var React = require('react');
 var PropTypes = React.PropTypes;
 var City = require('../components/City');
 
-var axios = require('axios');
-var _baseURL = 'http://api.openweathermap.org/data/2.5';
-var _APIKEY = 'a8e29972d260d0df1639bf0d7199f680';
-
-function getCurrentWeather(city) {
-  return axios.get(_baseURL + '/weather?q=' + city + '&appid=' + _APIKEY)
-    .then(function (currentWeather) {
-      console.log(currentWeather.data)
-    })
-}
+var getCurrentWeather = require('../helpers/api').getCurrentWeather
 
 var CityContainer = React.createClass({
   getDefaultProps: function () {
@@ -29,7 +20,7 @@ var CityContainer = React.createClass({
   },
   handleSubmitCity: function (e) {
     e.preventDefault();
-    var city = this.state.city;
+    var city = this.state.city
     getCurrentWeather(city)
   },
   handleUpdateCity: function (event) {
