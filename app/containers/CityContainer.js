@@ -24,12 +24,18 @@ var CityContainer = React.createClass({
   },
   handleSubmitCity: function (e) {
     e.preventDefault();
-    var city = this.state.city
-    console.log(city)
+    console.log(this.state.city)
     
-    this.context.router.push(
-        '/forecast/' + city
-    )
+    this.context.router.push({
+      //Go to url + pathname 
+      pathname: '/forecast/' + this.state.city,
+
+      //Pass object state, this.state.city to key called query
+      //Accessible for the next url using this.props.location.query____
+      query: {
+        city: this.state.city
+      }
+    })
   },
   handleUpdateCity: function (event) {
     this.setState({
