@@ -15,20 +15,27 @@ var ForecastContainer = React.createClass({
       forecastInfo: {},
     }
   },
+  componentWillMount: function() {
+    console.log('componentWillMount')
+  },
   componentDidMount: function() {
     //Refer: https://github.com/charlesakio/react_tutorial/blob/lifecycle/app/containers/ConfirmBattleContainer.js
-    var query = this.props.location.query
-    console.log('In ForecastContainer.componenDidMount ' + query)
-    getForeCast(query.city) 
+    var city = this.props.routeParams.city 
+    console.log('In ForecastContainer.componentDidMount')
+    this.requestForecast(city)
+  },
+  componentWillReceiveProps: function (nextProps) {
+    this.requestForecast(nextProps.routeParams.city)
+  },
+  requestForecast: function(city) {
+    console.log('In ForecastContainer.requestForecast')
+    getForeCast(city) 
     .then(function (forecastInfo) {
        this.setState({
         isLoading: false,
         forecastInfo: forecastInfo
       })
     }.bind(this))
-  },
-  componentWillMount: function() {
-    console.log('componentWillMount')
   },
   componentWillUnmount: function() {
     console.log('componentWillUnMount')
