@@ -15,7 +15,8 @@ function getCurrentWeather(city) {
 function getForeCast(city) {
   return axios.get(_baseURL + '/forecast/daily?q=' + city + '&type' + _Accurate + '&appid=' + _APIKEY + '&cnt=5')
   .then(function (forecast) {
-    console.log(forecast.data)
+    //console.log(forecast.data)
+    return forecast.data
   })
 }
 

@@ -12,18 +12,20 @@ var ForecastContainer = React.createClass({
     console.log('getInitialState')
     return {
       isLoading: true,
-     // forecastInfo: []
+      forecastInfo: {},
     }
   },
   componentDidMount: function() {
     //Refer: https://github.com/charlesakio/react_tutorial/blob/lifecycle/app/containers/ConfirmBattleContainer.js
     var query = this.props.location.query
-    //console.log('In ForecastContainer.componenDidMount ' + query)
-    getCurrentWeather(query.city)  
+    console.log('In ForecastContainer.componenDidMount ' + query)
     getForeCast(query.city) 
-    this.setState({
-      isLoading: false
-    })
+    .then(function (forecastInfo) {
+       this.setState({
+        isLoading: false,
+        forecastInfo: forecastInfo
+      })
+    }.bind(this))
   },
   componentWillMount: function() {
     console.log('componentWillMount')
@@ -35,6 +37,8 @@ var ForecastContainer = React.createClass({
     return (
       <Forecast 
         isLoading={this.state.isLoading}  
+        city={this.props.location.query}
+        forecastInfo={this.state.forecastInfo}
       />
     )
   }
