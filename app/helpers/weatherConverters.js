@@ -23,13 +23,18 @@ var monthsMap = {
   "11":"Dec"
 }
 
+function toDegrees(number) 
+  return parseInt(((number - 273.15)* 1.8000 + 32.00), 10)
+}
+
 function getDate (unixTimeStamp) {
   var date = new Date(unixTimeStamp * 1000)
   var day = daysMap[date.getDay()]
   var month = monthsMap[date.getMonth()] + ' ' + date.getDate();
-  return day + ' ' + month
+  return day + ', ' + month
 }
 
 module.exports = {
-  getDate: getDate
+  getDate: getDate,
+  toDegrees: toDegrees
 }
