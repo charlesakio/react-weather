@@ -37,6 +37,15 @@ var ForecastContainer = React.createClass({
       })
     }.bind(this))
   },
+
+  handleClick: function(weather) {
+    this.context.router.push({
+      pathname: '/detail/' + this.props.routeParams.city,
+      state: {
+        weather: weather
+      }
+    })
+  },
   componentWillUnmount: function() {
     console.log('componentWillUnMount')
   },
@@ -44,8 +53,9 @@ var ForecastContainer = React.createClass({
     return (
       <Forecast 
         isLoading={this.state.isLoading}  
-        city={this.props.location.query}
+        city={this.props.routeParams.city}
         forecastInfo={this.state.forecastInfo}
+        handleClick={this.handleClick}
       />
     )
   }
