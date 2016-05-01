@@ -23,7 +23,7 @@ var monthsMap = {
   "11":"Dec"
 }
 
-function toDegrees(number) 
+function toDegrees(number) {
   return parseInt(((number - 273.15)* 1.8000 + 32.00), 10)
 }
 
